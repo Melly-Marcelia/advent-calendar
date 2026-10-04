@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+  color-scheme: light;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #e2d6c3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='136' height='8'%3E%3Crect width='68' height='8' fill='%23e8e3d7'/%3E%3Crect x='68' width='68' height='8' fill='%23bcccd6'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  color: #3c3226;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
