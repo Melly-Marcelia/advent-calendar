@@ -35,8 +35,14 @@ const themeSkipped = ref([])
 
 const savingAll = ref(false)
 
-const shareUrl = computed(() => (calendar.value ? `${location.origin}/s/${calendar.value.share_token}` : ''))
-const editUrl = computed(() => (calendar.value ? `${location.origin}/e/${calendar.value.edit_token}` : ''))
+// Absolute links that include the base path and hash, e.g. https://host/advent-calendar/#/s/abc
+const absoluteUrl = (to) => new URL(router.resolve(to).href, location.href).href
+const shareUrl = computed(() =>
+  calendar.value ? absoluteUrl({ name: 'share', params: { shareToken: calendar.value.share_token } }) : '',
+)
+const editUrl = computed(() =>
+  calendar.value ? absoluteUrl({ name: 'edit', params: { editToken: calendar.value.edit_token } }) : '',
+)
 
 const filledCount = computed(
   () => Object.values(frameState).filter((s) => s.message.trim() || s.giftImagePath).length
