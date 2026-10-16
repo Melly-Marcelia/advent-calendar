@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { isLocalMode } from '../../lib/supabase'
 
 defineProps({
   shareUrl: { type: String, required: true },
@@ -35,6 +36,10 @@ function requestDelete() {
       There's no login — these links are the only way to access this calendar. Save the edit link
       somewhere safe; it can't be recovered if lost.
     </p>
+    <p v-if="isLocalMode" class="links__local">
+      Demo mode: this calendar lives in this browser, so the links only work on this device. Use the
+      Preview button to see what the recipient would get.
+    </p>
     <label class="links__row">
       <span>Share link (send this to them)</span>
       <div class="links__input">
@@ -69,6 +74,12 @@ function requestDelete() {
   margin: 0 0 1rem;
   color: #c1272d;
   font-weight: 600;
+}
+
+.links__local {
+  margin: -0.5rem 0 1rem;
+  color: #6b5f4f;
+  font-size: 0.85rem;
 }
 
 .links__row {
